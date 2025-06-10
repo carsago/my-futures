@@ -20,6 +20,6 @@ class HitterYearStatClientTest {
 
          List<HitterYearStat> actual = sut.getHitterYearStats(year);
 
-         assertThat(actual).isNotEmpty();
+         assertThat(actual).hasSize(30);
      }
 }
