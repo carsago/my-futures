@@ -19,34 +19,35 @@ public class FuturesHitterYearStatParser {
         final Elements elements = document.select("div.tbl-futures01 table tbody tr");
         List<HitterYearStat> stats = new ArrayList<>();
         for (final Element element : elements) {
-            final Elements tds = element.select("td");
-            final Element nameAnchor = tds.get(1).selectFirst("a");
-
-            HitterYearStat stat = new HitterYearStat(
-                    extractWebId(nameAnchor), // webId
-                    nameAnchor.text(), // 이름
-                    tds.get(2).text(), // 팀
-                    parseInt(tds.get(4).text()),  // 경기수
-                    parseInt(tds.get(5).text()),  // 타석
-                    parseInt(tds.get(6).text()),  // 타수
-                    parseInt(tds.get(7).text()),  // 득점
-                    parseInt(tds.get(8).text()),  // 안타
-                    parseInt(tds.get(9).text()),  // 2루타
-                    parseInt(tds.get(10).text()), // 3루타
-                    parseInt(tds.get(11).text()), // 홈런
-                    parseInt(tds.get(12).text()), // 타점
-                    parseInt(tds.get(13).text()), // 도루
-                    parseInt(tds.get(14).text()), // 볼넷
-                    parseInt(tds.get(15).text()), // 사구
-                    parseInt(tds.get(16).text()), // 삼진
-                    parseDouble(tds.get(17).text()),  // 장타율
-                    parseDouble(tds.get(18).text()) // 출루율
-            );
-
-            stats.add(stat);
+            stats.add(getHitterYearStat(element));
         }
 
         return stats;
+    }
+
+    private HitterYearStat getHitterYearStat(final Element element) {
+        final Elements tds = element.select("td");
+        final Element nameAnchor = tds.get(1).selectFirst("a");
+        return new HitterYearStat(
+                extractWebId(nameAnchor), // webId
+                nameAnchor.text(), // 이름
+                tds.get(2).text(), // 팀
+                parseInt(tds.get(4).text()),  // 경기수
+                parseInt(tds.get(5).text()),  // 타석
+                parseInt(tds.get(6).text()),  // 타수
+                parseInt(tds.get(7).text()),  // 득점
+                parseInt(tds.get(8).text()),  // 안타
+                parseInt(tds.get(9).text()),  // 2루타
+                parseInt(tds.get(10).text()), // 3루타
+                parseInt(tds.get(11).text()), // 홈런
+                parseInt(tds.get(12).text()), // 타점
+                parseInt(tds.get(13).text()), // 도루
+                parseInt(tds.get(14).text()), // 볼넷
+                parseInt(tds.get(15).text()), // 사구
+                parseInt(tds.get(16).text()), // 삼진
+                parseDouble(tds.get(17).text()),  // 장타율
+                parseDouble(tds.get(18).text()) // 출루율
+        );
     }
 
     private String extractWebId(final Element anchor) {
