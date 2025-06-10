@@ -58,7 +58,7 @@ public class FuturesHitterYearStatParser {
                 .replace(WEB_ID_PREFIX, "");
     }
 
-    private Integer parseInt(String text) {
+    private Integer parseInt(final String text) {
         try {
             return Integer.parseInt(text);
         } catch (NumberFormatException e) {
@@ -66,7 +66,7 @@ public class FuturesHitterYearStatParser {
         }
     }
 
-    private Double parseDouble(String text) {
+    private Double parseDouble(final String text) {
         try {
             return Double.parseDouble(text);
         } catch (NumberFormatException e) {
