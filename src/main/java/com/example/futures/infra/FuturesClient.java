@@ -11,8 +11,8 @@ import org.springframework.web.service.annotation.PostExchange;
 @HttpExchange
 interface FuturesClient {
 
-    @PostExchange("/Record/Player/HitterBasic/Basic1.aspx")
-    ResponseEntity<String> getKboHitters(
+    @PostExchange("/Futures/Player/hitter.aspx")
+    ResponseEntity<String> getFuturesHitterStatPage(
             @RequestBody MultiValueMap<String, String> form,
             @RequestHeader(value = HttpHeaders.COOKIE, required = false) String cookie
     );
