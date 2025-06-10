@@ -50,10 +50,10 @@ public class FuturesHitterYearStatParser {
         return stats;
     }
 
-    private String extractWebId(Element anchor) {
+    private String extractWebId(final Element anchor) {
         final String href = anchor.attr("href");
-        int idx = href.indexOf("playerId=");
-        return (idx != -1) ? href.substring(idx + 9) : null;
+        return href.substring(href.indexOf("playerId="))
+                .replace("playerID=", "");
     }
 
     private Integer parseInt(String text) {
