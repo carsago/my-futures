@@ -6,7 +6,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -17,12 +16,9 @@ public class FuturesHitterYearStatParser {
     public List<HitterYearStat> parse(final String html) {
         final Document document = Jsoup.parse(html);
         final Elements elements = document.select("div.tbl-futures01 table tbody tr");
-        List<HitterYearStat> stats = new ArrayList<>();
-        for (final Element element : elements) {
-            stats.add(getHitterYearStat(element));
-        }
-
-        return stats;
+        return elements.stream()
+                .map(this::getHitterYearStat)
+                .toList();
     }
 
     private HitterYearStat getHitterYearStat(final Element element) {
