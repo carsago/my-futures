@@ -17,7 +17,7 @@ public record HitterYearStat(
         Integer baseOnBalls,
         Integer hitByPitch,
         Integer strikeouts,
-        Double obp,
-        Double slg
+        Double slg,
+        Double obp
 ) {
 }
