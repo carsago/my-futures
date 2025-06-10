@@ -21,14 +21,11 @@ public class FuturesHitterYearStatParser {
         for (final Element element : elements) {
             final Elements tds = element.select("td");
             final Element nameAnchor = tds.get(1).selectFirst("a");
-            final String webId = extractWebId(nameAnchor);
-            final String name = nameAnchor.text();
-            final String team = tds.get(2).text();
 
             HitterYearStat stat = new HitterYearStat(
-                    webId,
-                    name,
-                    team,
+                    extractWebId(nameAnchor), // webId
+                    nameAnchor.text(), // 이름
+                    tds.get(2).text(), // 팀
                     parseInt(tds.get(4).text()),  // 경기수
                     parseInt(tds.get(5).text()),  // 타석
                     parseInt(tds.get(6).text()),  // 타수
