@@ -1,7 +1,10 @@
 package com.example.futures.infra;
 
-public class HitterYearStatClient {
-    public void getHitterYearStats(final int year) {
+import java.util.Collections;
+import java.util.List;
 
+public class HitterYearStatClient {
+    public List<HitterYearStat> getHitterYearStats(final int year) {
+        return Collections.emptyList();
     }
 }

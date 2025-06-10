@@ -2,6 +2,10 @@ package com.example.futures.infra;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 class HitterYearStatClientTest {
 
      @Test
@@ -9,6 +13,8 @@ class HitterYearStatClientTest {
          final var sut = new HitterYearStatClient();
          final var year = 2025;
 
-         sut.getHitterYearStats(year);
+         List<HitterYearStat> actual = sut.getHitterYearStats(year);
+
+         assertThat(actual).isNotEmpty();
      }
 }
