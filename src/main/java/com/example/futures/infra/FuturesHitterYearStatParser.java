@@ -12,6 +12,8 @@ import java.util.List;
 @Component
 public class FuturesHitterYearStatParser {
 
+    private static final String WEB_ID_PREFIX = "playerId=";
+
     public List<HitterYearStat> parse(final String html) {
         final Document document = Jsoup.parse(html);
         final Elements elements = document.select("div.tbl-futures01 table tbody tr");
@@ -52,8 +54,8 @@ public class FuturesHitterYearStatParser {
 
     private String extractWebId(final Element anchor) {
         final String href = anchor.attr("href");
-        return href.substring(href.indexOf("playerId="))
-                .replace("playerID=", "");
+        return href.substring(href.indexOf(WEB_ID_PREFIX))
+                .replace(WEB_ID_PREFIX, "");
     }
 
     private Integer parseInt(String text) {
